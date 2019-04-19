@@ -136,3 +136,55 @@ Require the quickbooks-module-prodio module and initialize the quickbooks npm mo
 | --- | ---- | ----- | ----------- | -------- |
 | `action` | string | `GET_ACCOUNT` | key which defines the type of action to be performed | YES |
 | `meta` | json | [SAMPLE_META_INFO](/jsons/get_business_account.json) | Json having business details. | YES |
+
+
+`4. CREATE CUSTOMER :`
+
+ 	This will create customer account in QBO.
+
+
+### Payload
+
+| Key | Type | Value | Description | Required |
+| --- | ---- | ----- | ----------- | -------- |
+| `action` | string | `CREATE_CUSTOMER` | key which defines the type of action to be performed | YES |
+| `meta` | json | [SAMPLE_META_INFO](/jsons/add_business_customer.json) | Json having business details. | YES |
+
+
+`5. EDIT CUSTOMER :`
+
+ 	This will edit customer account in QBO.
+
+
+### Payload
+
+| Key | Type | Value | Description | Required |
+| --- | ---- | ----- | ----------- | -------- |
+| `action` | string | `EDIT_CUSTOMER` | key which defines the type of action to be performed | YES |
+| `meta` | json | [SAMPLE_META_INFO](/jsons/edit_business_customer.json) | Json having business details. | YES |
+
+
+`6. GET CUSTOMER :`
+
+ 	This will get customer account from QBO.
+
+
+### Payload
+
+| Key | Type | Value | Description | Required |
+| --- | ---- | ----- | ----------- | -------- |
+| `action` | string | `GET_CUSTOMER` | key which defines the type of action to be performed | YES |
+| `meta` | json | [SAMPLE_META_INFO](/jsons/get_business_customer.json) | Json having business details. | YES |
+
+
+`7. DELETE CUSTOMER :`
+
+ 	This will delete customer account from QBO.
+
+
+### Payload
+
+| Key | Type | Value | Description | Required |
+| --- | ---- | ----- | ----------- | -------- |
+| `action` | string | `DELETE_CUSTOMER` | key which defines the type of action to be performed | YES |
+| `meta` | json | [SAMPLE_META_INFO](/jsons/delete_business_customer.json) | Json having business details. | YES |

@@ -1,0 +1,27 @@
+{
+	"customerId":"", /* this is your system client id or any other user id, optional*/
+	"Title":"Mr.",
+	"GivenName":"Shashikant",
+	"FamilyName":"Sharma",
+	"MiddleName":"",
+	"DisplayName": "Shashikant Sharma",
+	"Mobile":{
+		"FreeFormNumber":"(555) 555-5555"
+	},
+    "BillAddr": {
+        "Line1": "123 Main Street",
+        "City": "Mountain View",
+        "Country": "USA",
+        "CountrySubDivisionCode": "CA",
+        "PostalCode": "94042"
+    },
+    "CompanyName":"PDW",
+    "Notes": "Here are other details.",
+    "PrimaryPhone": {
+        "FreeFormNumber": "(555) 555-5555"
+    },
+    "PrimaryEmailAddr": {
+        "Address": "jdrew@myemail.com"
+    },
+    "MetaData":{}
+}

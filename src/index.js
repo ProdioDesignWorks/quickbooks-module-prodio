@@ -43,6 +43,18 @@ function quickBookServices(BASE_URL) {
         case "GET_ACCOUNT":
           return funGetAccount(BASE_URL,payload,callback);
         break;
+        case "CREATE_CUSTOMER":
+          return funAddCustomer(BASE_URL,payload,callback);
+        break;
+        case "EDIT_CUSTOMER":
+          return funEditCustomer(BASE_URL,payload,callback);
+        break;
+        case "GET_CUSTOMER":
+          return funGetCustomer(BASE_URL,payload,callback);
+        break;
+        case "DELETE_CUSTOMER":
+          return funDeleteCustomer(BASE_URL,payload,callback);
+        break;
         default:
           let errorMessage = `Please add BaseUrl.`;
           return errorMessage;
@@ -124,5 +136,92 @@ const funGetAccount = function (BASE_URL,payload,callback) {
     return callback(json);
   });
 }
+
+
+const funAddCustomer = function (BASE_URL,payload,callback) {
+   let customerId = "";
+  if (!isNull(payload["meta"]["customerId"])) {
+    customerId = payload["meta"]["customerId"];
+  }
+
+  delete payload["meta"]["customerId"];
+
+  let url = `${BASE_URL}QBCustomers/createCustomer?customerId=${customerId}`;
+  axios.post(url, payload).then(response => {
+    //console.log(response)
+    return callback(response);
+  })
+  .catch((error) => {
+    let json = stringify(error);
+    return callback(json);
+  });
+}
+
+
+const funEditCustomer = function (BASE_URL,payload,callback) {
+  let customerId = "";
+  if (isNull(payload["meta"]["customerId"])) {
+      return callback(new HttpErrors.BadRequest('customerId is mandatory.', { expose: false }));
+  }else{
+    customerId = payload["meta"]["customerId"];
+  }
+
+  delete payload["meta"]["customerId"];
+
+  let url = `${BASE_URL}QBCustomers/editCustomer?customerId=${customerId}`;
+  axios.post(url, payload).then(response => {
+    //console.log(response)
+    return callback(response);
+  })
+  .catch((error) => {
+    let json = stringify(error);
+    return callback(json);
+  });
+}
+
+
+const funGetCustomer = function (BASE_URL,payload,callback) {
+  let customerId = "";
+  if (isNull(payload["meta"]["customerId"])) {
+      return callback(new HttpErrors.BadRequest('customerId is mandatory.', { expose: false }));
+  }else{
+      customerId = payload["meta"]["customerId"];
+  }
+
+  delete payload["meta"]["customerId"];
+
+  let url = `${BASE_URL}QBCustomers/getCustomer?customerId=${customerId}`;
+  axios.post(url, payload).then(response => {
+    //console.log(response)
+    return callback(response);
+  })
+  .catch((error) => {
+    let json = stringify(error);
+    return callback(json);
+  });
+}
+
+const funDeleteCustomer = function (BASE_URL,payload,callback) {
+  let customerId = "";
+  if (isNull(payload["meta"]["customerId"])) {
+      return callback(new HttpErrors.BadRequest('customerId is mandatory.', { expose: false }));
+  }else{
+      customerId = payload["meta"]["customerId"];
+  }
+
+  delete payload["meta"]["customerId"];
+
+  let url = `${BASE_URL}QBCustomers/deleteCustomer?customerId=${customerId}`;
+  axios.post(url, payload).then(response => {
+    //console.log(response)
+    return callback(response);
+  })
+  .catch((error) => {
+    let json = stringify(error);
+    return callback(json);
+  });
+}
+
+
 
 module.exports = quickBookServices;
