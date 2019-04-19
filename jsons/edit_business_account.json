@@ -1,0 +1,5 @@
+{
+    "accountId":"{{YOUR_SITE_ID}}",  /* You systems site id or account id, optional */
+    "AccountType": "Accounts Receivable", /* do  not change*/
+    "Name": "AR4" /* Any custom name */
+}
