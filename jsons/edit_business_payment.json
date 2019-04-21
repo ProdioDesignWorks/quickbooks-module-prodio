@@ -1,0 +1,6 @@
+{
+    "paymentId":"", /* required, your system id*/
+    "paymentInvoiceId":"", /* optional, your system id*/
+    "customerId":"", /* required */
+    "TotalAmt":"100" /* required */
+}

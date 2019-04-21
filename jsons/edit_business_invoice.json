@@ -1,0 +1,28 @@
+{
+    "paymentInvoiceId":"", /* required, your system id*/
+    "customerId":"", /* required */
+    "Line": [
+        {
+          "Amount": 100.00,
+          "Description":"",
+          "DetailType": "SalesItemLineDetail",
+          "SalesItemLineDetail": {
+            "ItemRef": {
+              "value": "1",
+              "name": "Services"
+            }
+          }
+        },
+        {
+          "Amount": 550.00,
+          "Description":"",
+          "DetailType": "SalesItemLineDetail",
+          "SalesItemLineDetail": {
+            "ItemRef": {
+              "value": "1",
+              "name": "Services"
+            }
+          }
+        }
+    ]
+}
