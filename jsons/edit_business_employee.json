@@ -1,0 +1,15 @@
+{
+    "employeeId":"", /* your system user id, required */
+    "SSN": "",
+    "PrimaryAddr": {
+        "Line1": "45 N. Elm Street",
+        "City": "Middlefield",
+        "CountrySubDivisionCode": "CA",
+        "PostalCode": "93242"
+    },
+    "GivenName": "John",
+    "FamilyName": "Meuller",
+    "PrimaryPhone": {
+        "FreeFormNumber": "408-525-1234"
+    }
+}

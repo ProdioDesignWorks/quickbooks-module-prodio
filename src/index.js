@@ -55,6 +55,60 @@ function quickBookServices(BASE_URL) {
         case "DELETE_CUSTOMER":
           return funDeleteCustomer(BASE_URL,payload,callback);
         break;
+        case "GETALL_CUSTOMERS":
+          return funGetAllCustomers(BASE_URL,payload,callback);
+        break;
+        case "CREATE_EMPLOYEE":
+          return funAddEmployee(BASE_URL,payload,callback);
+        break;
+        case "EDIT_EMPLOYEE":
+          return funEditEmployee(BASE_URL,payload,callback);
+        break;
+        case "GET_EMPLOYEE":
+          return funGetEmployee(BASE_URL,payload,callback);
+        break;
+        case "DELETE_EMPLOYEE":
+          return funDeleteEmployee(BASE_URL,payload,callback);
+        break;
+        case "GETALL_EMPLOYEES":
+          return funGetAllEmployees(BASE_URL,payload,callback);
+        break;
+        case "CREATE_INVOICE":
+          return funCreateInvoice(BASE_URL,payload,callback);
+        break;
+        case "EDIT_INVOICE":
+          return funEditInvoice(BASE_URL,payload,callback);
+        break;
+        case "DELETE_INVOICE":
+          return funDeleteInvoice(BASE_URL,payload,callback);
+        break;
+        case "VOID_INVOICE":
+          return funVoidInvoice(BASE_URL,payload,callback);
+        break;
+        case "GETALL_INVOICES":
+          return funGetAllInvoices(BASE_URL,payload,callback);
+        break;
+        case "EMAIL_INVOICE":
+          return funEmailInvoice(BASE_URL,payload,callback);
+        break;
+        case "GET_INVOICE_PDF":
+          return funGetPdfInvoice(BASE_URL,payload,callback);
+        break;
+        case "CREATE_PAYMENT":
+          return funAddPayment(BASE_URL,payload,callback);
+        break;
+        case "EDIT_PAYMENT":
+          return funEditPayment(BASE_URL,payload,callback);
+        break;
+        case "GET_PAYMENT":
+          return funGetPayment(BASE_URL,payload,callback);
+        break;
+        case "DELETE_PAYMENT":
+          return funDeletePayment(BASE_URL,payload,callback);
+        break;
+        case "GETALL_PAYMENTS":
+          return funGetAllPayments(BASE_URL,payload,callback);
+        break;
         default:
           let errorMessage = `Please add BaseUrl.`;
           return errorMessage;
@@ -212,6 +266,423 @@ const funDeleteCustomer = function (BASE_URL,payload,callback) {
   delete payload["meta"]["customerId"];
 
   let url = `${BASE_URL}QBCustomers/deleteCustomer?customerId=${customerId}`;
+  axios.post(url, payload).then(response => {
+    //console.log(response)
+    return callback(response);
+  })
+  .catch((error) => {
+    let json = stringify(error);
+    return callback(json);
+  });
+}
+
+
+const funGetAllCustomers = function (BASE_URL,payload,callback) {
+  let pageNo = "";
+  if (isNull(payload["meta"]["pageNo"])) {
+      return callback(new HttpErrors.BadRequest('pageNo is mandatory.', { expose: false }));
+  }else{
+      pageNo = payload["meta"]["pageNo"];
+  }
+
+  let url = `${BASE_URL}QBCustomers/getAllCustomers?pageNo=${pageNo}`;
+  axios.post(url, payload).then(response => {
+    //console.log(response)
+    return callback(response);
+  })
+  .catch((error) => {
+    let json = stringify(error);
+    return callback(json);
+  });
+}
+
+////
+const funAddEmployee = function (BASE_URL,payload,callback) {
+   let employeeId = "";
+  if (!isNull(payload["meta"]["employeeId"])) {
+    employeeId = payload["meta"]["employeeId"];
+  }
+
+  delete payload["meta"]["employeeId"];
+
+  let url = `${BASE_URL}QBEmployees/createEmployee?employeeId=${employeeId}`;
+  axios.post(url, payload).then(response => {
+    //console.log(response)
+    return callback(response);
+  })
+  .catch((error) => {
+    let json = stringify(error);
+    return callback(json);
+  });
+}
+
+
+const funEditEmployee = function (BASE_URL,payload,callback) {
+  let employeeId = "";
+  if (isNull(payload["meta"]["employeeId"])) {
+      return callback(new HttpErrors.BadRequest('employeeId is mandatory.', { expose: false }));
+  }else{
+    employeeId = payload["meta"]["employeeId"];
+  }
+
+  delete payload["meta"]["employeeId"];
+
+  let url = `${BASE_URL}QBEmployees/editEmployee?employeeId=${employeeId}`;
+  axios.post(url, payload).then(response => {
+    //console.log(response)
+    return callback(response);
+  })
+  .catch((error) => {
+    let json = stringify(error);
+    return callback(json);
+  });
+}
+
+
+const funGetEmployee = function (BASE_URL,payload,callback) {
+  let employeeId = "";
+  if (isNull(payload["meta"]["employeeId"])) {
+      return callback(new HttpErrors.BadRequest('employeeId is mandatory.', { expose: false }));
+  }else{
+      employeeId = payload["meta"]["employeeId"];
+  }
+
+  delete payload["meta"]["employeeId"];
+
+  let url = `${BASE_URL}QBEmployees/getEmployee?employeeId=${employeeId}`;
+  axios.post(url, payload).then(response => {
+    //console.log(response)
+    return callback(response);
+  })
+  .catch((error) => {
+    let json = stringify(error);
+    return callback(json);
+  });
+}
+
+const funDeleteEmployee = function (BASE_URL,payload,callback) {
+  let employeeId = "";
+  if (isNull(payload["meta"]["employeeId"])) {
+      return callback(new HttpErrors.BadRequest('employeeId is mandatory.', { expose: false }));
+  }else{
+      employeeId = payload["meta"]["employeeId"];
+  }
+
+  delete payload["meta"]["employeeId"];
+
+  let url = `${BASE_URL}QBEmployees/deleteEmployee?employeeId=${employeeId}`;
+  axios.post(url, payload).then(response => {
+    //console.log(response)
+    return callback(response);
+  })
+  .catch((error) => {
+    let json = stringify(error);
+    return callback(json);
+  });
+}
+
+
+const funGetAllEmployees = function (BASE_URL,payload,callback) {
+  let pageNo = "";
+  if (isNull(payload["meta"]["pageNo"])) {
+      return callback(new HttpErrors.BadRequest('pageNo is mandatory.', { expose: false }));
+  }else{
+      pageNo = payload["meta"]["pageNo"];
+  }
+
+  let url = `${BASE_URL}QBEmployees/getAllEmployees?pageNo=${pageNo}`;
+  axios.post(url, payload).then(response => {
+    //console.log(response)
+    return callback(response);
+  })
+  .catch((error) => {
+    let json = stringify(error);
+    return callback(json);
+  });
+}
+
+
+
+const funCreateInvoice = function (BASE_URL,payload,callback) {
+  let paymentInvoiceId = "";
+  if (!isNull(payload["meta"]["paymentInvoiceId"])) {
+    paymentInvoiceId = payload["meta"]["paymentInvoiceId"];
+  }
+  let customerId = "";
+  if (!isNull(payload["meta"]["customerId"])) {
+    customerId = payload["meta"]["customerId"];
+  }
+
+  delete payload["meta"]["paymentInvoiceId"];
+  delete payload["meta"]["customerId"];
+
+  let url = `${BASE_URL}QBInvoices/createInvoice?paymentInvoiceId=${paymentInvoiceId}&customerId=${customerId}`;
+  axios.post(url, payload).then(response => {
+    //console.log(response)
+    return callback(response);
+  })
+  .catch((error) => {
+    let json = stringify(error);
+    return callback(json);
+  });
+}
+
+
+const funEditInvoice = function (BASE_URL,payload,callback) {
+  let paymentInvoiceId = "";
+  if (!isNull(payload["meta"]["paymentInvoiceId"])) {
+    paymentInvoiceId = payload["meta"]["paymentInvoiceId"];
+  }
+  let customerId = "";
+  if (!isNull(payload["meta"]["customerId"])) {
+    customerId = payload["meta"]["customerId"];
+  }
+
+  delete payload["meta"]["paymentInvoiceId"];
+  delete payload["meta"]["customerId"];
+
+  let url = `${BASE_URL}QBInvoices/editInvoice?paymentInvoiceId=${paymentInvoiceId}&customerId=${customerId}`;
+  axios.post(url, payload).then(response => {
+    //console.log(response)
+    return callback(response);
+  })
+  .catch((error) => {
+    let json = stringify(error);
+    return callback(json);
+  });
+}
+
+
+const funDeleteInvoice = function (BASE_URL,payload,callback) {
+  let paymentInvoiceId = "";
+  if (isNull(payload["meta"]["paymentInvoiceId"])) {
+      return callback(new HttpErrors.BadRequest('paymentInvoiceId is mandatory.', { expose: false }));
+  }else{
+      paymentInvoiceId = payload["meta"]["paymentInvoiceId"];
+  }
+
+  delete payload["meta"]["paymentInvoiceId"];
+
+  let url = `${BASE_URL}QBInvoices/deleteInvoice?paymentInvoiceId=${paymentInvoiceId}`;
+  axios.post(url, payload).then(response => {
+    //console.log(response)
+    return callback(response);
+  })
+  .catch((error) => {
+    let json = stringify(error);
+    return callback(json);
+  });
+}
+
+const funVoidInvoice = function (BASE_URL,payload,callback) {
+  let paymentInvoiceId = "";
+  if (isNull(payload["meta"]["paymentInvoiceId"])) {
+      return callback(new HttpErrors.BadRequest('paymentInvoiceId is mandatory.', { expose: false }));
+  }else{
+      paymentInvoiceId = payload["meta"]["paymentInvoiceId"];
+  }
+
+  delete payload["meta"]["paymentInvoiceId"];
+
+  let url = `${BASE_URL}QBInvoices/voidInvoice?paymentInvoiceId=${paymentInvoiceId}`;
+  axios.post(url, payload).then(response => {
+    //console.log(response)
+    return callback(response);
+  })
+  .catch((error) => {
+    let json = stringify(error);
+    return callback(json);
+  });
+}
+
+
+const funGetAllInvoices = function (BASE_URL,payload,callback) {
+  let pageNo = "";
+  if (isNull(payload["meta"]["pageNo"])) {
+      return callback(new HttpErrors.BadRequest('pageNo is mandatory.', { expose: false }));
+  }else{
+      pageNo = payload["meta"]["pageNo"];
+  }
+
+  let url = `${BASE_URL}QBInvoices/getAllInvoices?pageNo=${pageNo}`;
+  axios.post(url, payload).then(response => {
+    //console.log(response)
+    return callback(response);
+  })
+  .catch((error) => {
+    let json = stringify(error);
+    return callback(json);
+  });
+}
+
+
+const funEmailInvoice = function (BASE_URL,payload,callback) {
+  let paymentInvoiceId = "";
+  if (isNull(payload["meta"]["paymentInvoiceId"])) {
+      return callback(new HttpErrors.BadRequest('paymentInvoiceId is mandatory.', { expose: false }));
+  }else{
+      paymentInvoiceId = payload["meta"]["paymentInvoiceId"];
+  }
+
+  let emailId = "";
+  if (isNull(payload["meta"]["emailId"])) {
+      return callback(new HttpErrors.BadRequest('emailId is mandatory.', { expose: false }));
+  }else{
+      emailId = payload["meta"]["emailId"];
+  }
+
+  delete payload["meta"]["paymentInvoiceId"];
+
+  let url = `${BASE_URL}QBInvoices/emailInvoice?paymentInvoiceId=${paymentInvoiceId}&emailId=${emailId}`;
+  axios.post(url, payload).then(response => {
+    //console.log(response)
+    return callback(response);
+  })
+  .catch((error) => {
+    let json = stringify(error);
+    return callback(json);
+  });
+}
+
+
+const funGetPdfInvoice = function (BASE_URL,payload,callback) {
+  let paymentInvoiceId = "";
+  if (isNull(payload["meta"]["paymentInvoiceId"])) {
+      return callback(new HttpErrors.BadRequest('paymentInvoiceId is mandatory.', { expose: false }));
+  }else{
+      paymentInvoiceId = payload["meta"]["paymentInvoiceId"];
+  }
+
+  delete payload["meta"]["paymentInvoiceId"];
+
+  let url = `${BASE_URL}QBInvoices/getPDFInvoice?paymentInvoiceId=${paymentInvoiceId}`;
+  axios.post(url, payload).then(response => {
+    //console.log(response)
+    return callback(response);
+  })
+  .catch((error) => {
+    let json = stringify(error);
+    return callback(json);
+  });
+}
+
+
+const funAddPayment = function (BASE_URL,payload,callback) {
+  let paymentId = "";
+  if (!isNull(payload["meta"]["paymentId"])) {
+    paymentId = payload["meta"]["paymentId"];
+  }
+
+  let customerId = "";
+  if (!isNull(payload["meta"]["customerId"])) {
+    customerId = payload["meta"]["customerId"];
+  }
+
+  let paymentInvoiceId = "";
+  if (!isNull(payload["meta"]["paymentInvoiceId"])) {
+    paymentInvoiceId = payload["meta"]["paymentInvoiceId"];
+  }
+
+  delete payload["meta"]["paymentId"];
+  delete payload["meta"]["customerId"];
+  delete payload["meta"]["paymentInvoiceId"];
+
+  let url = `${BASE_URL}QBPayments/createPayment?paymentId=${paymentId}&customerId=${customerId}&paymentInvoiceId=${paymentInvoiceId}`;
+  axios.post(url, payload).then(response => {
+    //console.log(response)
+    return callback(response);
+  })
+  .catch((error) => {
+    let json = stringify(error);
+    return callback(json);
+  });
+}
+
+
+const funEditPayment = function (BASE_URL,payload,callback) {
+  let paymentId = "";
+  if (!isNull(payload["meta"]["paymentId"])) {
+    paymentId = payload["meta"]["paymentId"];
+  }
+
+  let customerId = "";
+  if (!isNull(payload["meta"]["customerId"])) {
+    customerId = payload["meta"]["customerId"];
+  }
+
+  let paymentInvoiceId = "";
+  if (!isNull(payload["meta"]["paymentInvoiceId"])) {
+    paymentInvoiceId = payload["meta"]["paymentInvoiceId"];
+  }
+
+  delete payload["meta"]["paymentId"];
+  delete payload["meta"]["customerId"];
+  delete payload["meta"]["paymentInvoiceId"];
+
+  let url = `${BASE_URL}QBPayments/editPayment?paymentId=${paymentId}&customerId=${customerId}&paymentInvoiceId=${paymentInvoiceId}`;
+  axios.post(url, payload).then(response => {
+    //console.log(response)
+    return callback(response);
+  })
+  .catch((error) => {
+    let json = stringify(error);
+    return callback(json);
+  });
+}
+
+
+const funGetPayment = function (BASE_URL,payload,callback) {
+  let paymentId = "";
+  if (isNull(payload["meta"]["paymentId"])) {
+      return callback(new HttpErrors.BadRequest('paymentId is mandatory.', { expose: false }));
+  }else{
+      paymentId = payload["meta"]["paymentId"];
+  }
+
+  delete payload["meta"]["paymentId"];
+
+  let url = `${BASE_URL}QBPayments/getPayment?paymentId=${paymentId}`;
+  axios.post(url, payload).then(response => {
+    //console.log(response)
+    return callback(response);
+  })
+  .catch((error) => {
+    let json = stringify(error);
+    return callback(json);
+  });
+}
+
+const funDeletePayment = function (BASE_URL,payload,callback) {
+  let paymentId = "";
+  if (isNull(payload["meta"]["paymentId"])) {
+      return callback(new HttpErrors.BadRequest('paymentId is mandatory.', { expose: false }));
+  }else{
+      paymentId = payload["meta"]["paymentId"];
+  }
+
+  delete payload["meta"]["paymentId"];
+
+  let url = `${BASE_URL}QBPayments/deletePayment?paymentId=${paymentId}`;
+  axios.post(url, payload).then(response => {
+    //console.log(response)
+    return callback(response);
+  })
+  .catch((error) => {
+    let json = stringify(error);
+    return callback(json);
+  });
+}
+
+
+const funGetAllPayments = function (BASE_URL,payload,callback) {
+  let pageNo = "";
+  if (isNull(payload["meta"]["pageNo"])) {
+      return callback(new HttpErrors.BadRequest('pageNo is mandatory.', { expose: false }));
+  }else{
+      pageNo = payload["meta"]["pageNo"];
+  }
+
+  let url = `${BASE_URL}QBPayments/getAllPayments?pageNo=${pageNo}`;
   axios.post(url, payload).then(response => {
     //console.log(response)
     return callback(response);
