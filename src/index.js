@@ -109,6 +109,21 @@ function quickBookServices(BASE_URL) {
         case "GETALL_PAYMENTS":
           return funGetAllPayments(BASE_URL,payload,callback);
         break;
+        case "CREATE_VENDOR":
+          return funAddVendor(BASE_URL,payload,callback);
+        break;
+        case "EDIT_VENDOR":
+          return funEditVendor(BASE_URL,payload,callback);
+        break;
+        case "GET_VENDOR":
+          return funGetVendor(BASE_URL,payload,callback);
+        break;
+        case "DELETE_VENDOR":
+          return funDeleteVendor(BASE_URL,payload,callback);
+        break;
+        case "GETALL_VENDORS":
+          return funGetAllVendors(BASE_URL,payload,callback);
+        break;
         default:
           let errorMessage = `Please add BaseUrl.`;
           return errorMessage;
@@ -683,6 +698,111 @@ const funGetAllPayments = function (BASE_URL,payload,callback) {
   }
 
   let url = `${BASE_URL}QBPayments/getAllPayments?pageNo=${pageNo}`;
+  axios.post(url, payload).then(response => {
+    //console.log(response)
+    return callback(response);
+  })
+  .catch((error) => {
+    let json = stringify(error);
+    return callback(json);
+  });
+}
+
+//------------- VENDOR ------------------
+const funAddVendor = function (BASE_URL,payload,callback) {
+   let vendorId = "";
+  if (!isNull(payload["meta"]["vendorId"])) {
+    vendorId = payload["meta"]["vendorId"];
+  }
+
+  delete payload["meta"]["vendorId"];
+
+  let url = `${BASE_URL}QBVendors/createVendor?vendorId=${vendorId}`;
+  axios.post(url, payload).then(response => {
+    //console.log(response)
+    return callback(response);
+  })
+  .catch((error) => {
+    let json = stringify(error);
+    return callback(json);
+  });
+}
+
+
+const funEditVendor = function (BASE_URL,payload,callback) {
+  let vendorId = "";
+  if (isNull(payload["meta"]["vendorId"])) {
+      return callback(new HttpErrors.BadRequest('vendorId is mandatory.', { expose: false }));
+  }else{
+    vendorId = payload["meta"]["vendorId"];
+  }
+
+  delete payload["meta"]["vendorId"];
+
+  let url = `${BASE_URL}QBVendors/editVendor?vendorId=${vendorId}`;
+  axios.post(url, payload).then(response => {
+    //console.log(response)
+    return callback(response);
+  })
+  .catch((error) => {
+    let json = stringify(error);
+    return callback(json);
+  });
+}
+
+
+const funGetVendor = function (BASE_URL,payload,callback) {
+  let vendorId = "";
+  if (isNull(payload["meta"]["vendorId"])) {
+      return callback(new HttpErrors.BadRequest('vendorId is mandatory.', { expose: false }));
+  }else{
+      vendorId = payload["meta"]["vendorId"];
+  }
+
+  delete payload["meta"]["vendorId"];
+
+  let url = `${BASE_URL}QBVendors/getVendor?vendorId=${vendorId}`;
+  axios.post(url, payload).then(response => {
+    //console.log(response)
+    return callback(response);
+  })
+  .catch((error) => {
+    let json = stringify(error);
+    return callback(json);
+  });
+}
+
+const funDeleteVendor = function (BASE_URL,payload,callback) {
+  let vendorId = "";
+  if (isNull(payload["meta"]["vendorId"])) {
+      return callback(new HttpErrors.BadRequest('vendorId is mandatory.', { expose: false }));
+  }else{
+      vendorId = payload["meta"]["vendorId"];
+  }
+
+  delete payload["meta"]["vendorId"];
+
+  let url = `${BASE_URL}QBVendors/deleteVendor?vendorId=${vendorId}`;
+  axios.post(url, payload).then(response => {
+    //console.log(response)
+    return callback(response);
+  })
+  .catch((error) => {
+    let json = stringify(error);
+    return callback(json);
+  });
+}
+
+
+const funGetAllVendors = function (BASE_URL,payload,callback) {
+  let pageNo = "";
+  if (isNull(payload["meta"]["pageNo"])) {
+      return callback(new HttpErrors.BadRequest('pageNo is mandatory.', { expose: false }));
+  }else{
+      pageNo = payload["meta"]["pageNo"];
+  }
+
+  let url = `${BASE_URL}QBVendors/getAllVendors?pageNo=${pageNo}`;
   axios.post(url, payload).then(response => {
     //console.log(response)
     return callback(response);

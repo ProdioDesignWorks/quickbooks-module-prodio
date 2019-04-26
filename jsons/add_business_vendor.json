@@ -1,0 +1,33 @@
+{
+    "vendorId":"", /* you system vendor id*/
+    "BillAddr": {
+        "Line1": "Dianne's Auto Shop",
+        "Line2": "Dianne Bradley",
+        "Line3": "29834 Mustang Ave.",
+        "City": "Millbrae",
+        "Country": "U.S.A",
+        "CountrySubDivisionCode": "CA",
+        "PostalCode": "94030"
+    },
+    "TaxIdentifier": "99-5688293",
+    "AcctNum": "35372649",
+    "Title": "Ms.",
+    "GivenName": "Dianne",
+    "FamilyName": "Bradley",
+    "Suffix": "Sr.",
+    "CompanyName": "Dianne's Auto Shop",
+    "DisplayName": "Dianne's Auto Shop",
+    "PrintOnCheckName": "Dianne's Auto Shop",
+    "PrimaryPhone": {
+        "FreeFormNumber": "(650) 555-2342"
+    },
+    "Mobile": {
+        "FreeFormNumber": "(650) 555-2000"
+    },
+    "PrimaryEmailAddr": {
+        "Address": "dbradley@myemail.com"
+    },
+    "WebAddr": {
+        "URI": "http://DiannesAutoShop.com"
+    }
+}
