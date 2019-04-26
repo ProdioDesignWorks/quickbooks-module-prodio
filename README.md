@@ -33,6 +33,17 @@
 
 $ npm install quickbooks-module-prodio@latest --save
 
+
+# FIRST STEP
+
+The QBO has Oauth2.0 Authentication process. So it requires to verify our app FOR THE VERY FIRST TIME MANUALLY, with the QB App created to get app access token, then from next time the code will auto create the refresh token, before the expiration of the current token.
+
+After you the APIs on the host and its running -- use this URL to verify once.
+
+http://{DOMAIN}:7000/api/Oauth2Data/callback
+
+Note that, this is One Time Process, which has to be done prior using the APIs.
+
   
 # Initialization 
 Require the quickbooks-module-prodio module and initialize the quickbooks npm module client.
@@ -426,3 +437,68 @@ Require the quickbooks-module-prodio module and initialize the quickbooks npm mo
 | --- | ---- | ----- | ----------- | -------- |
 | `action` | string | `GETALL_PAYMENTS` | key which defines the type of action to be performed | YES |
 | `meta` | json | [SAMPLE_META_INFO](/jsons/getall_business_payments.json) | Json having business details. | YES |
+
+
+`21. CREATE VENDOR :`
+
+ 	This will create VENDOR account in QBO.
+
+
+### Payload
+
+| Key | Type | Value | Description | Required |
+| --- | ---- | ----- | ----------- | -------- |
+| `action` | string | `CREATE_VENDOR` | key which defines the type of action to be performed | YES |
+| `meta` | json | [SAMPLE_META_INFO](/jsons/add_business_vendor.json) | Json having business details. | YES |
+
+
+`22. EDIT VENDOR :`
+
+ 	This will edit VENDOR account in QBO.
+
+
+### Payload
+
+| Key | Type | Value | Description | Required |
+| --- | ---- | ----- | ----------- | -------- |
+| `action` | string | `EDIT_VENDOR` | key which defines the type of action to be performed | YES |
+| `meta` | json | [SAMPLE_META_INFO](/jsons/edit_business_vendor.json) | Json having business details. | YES |
+
+
+`23. GET VENDOR :`
+
+ 	This will get VENDOR account from QBO.
+
+
+### Payload
+
+| Key | Type | Value | Description | Required |
+| --- | ---- | ----- | ----------- | -------- |
+| `action` | string | `GET_VENDOR` | key which defines the type of action to be performed | YES |
+| `meta` | json | [SAMPLE_META_INFO](/jsons/get_business_vendor.json) | Json having business details. | YES |
+
+
+`24. DELETE VENDOR :`
+
+ 	This will delete VENDOR account from QBO.
+
+
+### Payload
+
+| Key | Type | Value | Description | Required |
+| --- | ---- | ----- | ----------- | -------- |
+| `action` | string | `DELETE_VENDOR` | key which defines the type of action to be performed | YES |
+| `meta` | json | [SAMPLE_META_INFO](/jsons/delete_business_vendor.json) | Json having business details. | YES |
+
+
+`25. GET ALL VENDORS :`
+
+ 	This will list all VENDORS account from QBO.
+
+
+### Payload
+
+| Key | Type | Value | Description | Required |
+| --- | ---- | ----- | ----------- | -------- |
+| `action` | string | `GETALL_VENDORS` | key which defines the type of action to be performed | YES |
+| `meta` | json | [SAMPLE_META_INFO](/jsons/getall_business_vendors.json) | Json having business details. | YES |
