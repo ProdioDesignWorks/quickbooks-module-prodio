@@ -40,7 +40,7 @@ The QBO has Oauth2.0 Authentication process. So it requires to verify our app FO
 
 After you the APIs on the host and its running -- use this URL to verify once.
 
-http://{DOMAIN}:7000/api/Oauth2Data/callback
+http://{DOMAIN}:7000/api/Oauth2Data/connectQuickBooks
 
 Note that, this is One Time Process, which has to be done prior using the APIs.
 
