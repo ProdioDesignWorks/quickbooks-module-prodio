@@ -1,6 +1,6 @@
 # quickbooks-module-prodio
 
-`quickbooks-module-prodio` is an  node js client for the  `quickbooks-services-prodio API`. 
+`quickbooks-module-prodio` is NodeJS client for the `quickbooks-services-prodio API`. 
 
 
 # Prerequisite (Things to do before installing this module):
@@ -8,7 +8,7 @@
  * Navigate to your repo cd quickbooks-services-prodio
  * Install dependencies npm install
  * Start service node . or npm start or node server/server.js
- * Open http://localhost:7000/explorer/ in your browser
+ * Open http://localhost:3040/explorer/ in your browser
  * If you've pm2 installed then use this pm2 start server/server.js --name="QB_SERVICE"
  * When you install `quickbooks-module-prodio`, it will ask question for the BASE_URL of this `QB_SERVICE` - eventually.
 
@@ -20,13 +20,15 @@
 
 * Add/Edit/Get Account
 
-* Add/Edit/Get Client
+* Add/Edit/Get/Delete Client
 
-* Add/Edit/Get Employees
+* Add/Edit/Get/Delete Employees
 
-* Add/Edit/Get Invoices
+* Add/Edit/Get/Delete Invoices
 
-* Add/Edit/Get Payments
+* Add/Edit/Get/Delete Payments
+
+* Add/Edit/Get/Delete Vendors
 
 
 # Installation
@@ -38,11 +40,23 @@ $ npm install quickbooks-module-prodio@latest --save
 
 The QBO has Oauth2.0 Authentication process. So it requires to verify our app FOR THE VERY FIRST TIME MANUALLY, with the QB App created to get app access token, then from next time the code will auto create the refresh token, before the expiration of the current token.
 
-After you the APIs on the host and its running -- use this URL to verify once.
+1. You will need to login into QuickBooks developer account.
 
-http://{DOMAIN}:7000/api/Oauth2Data/connectQuickBooks
+2. You will have to create a app ( sometimes there is already default app created ).
 
-Note that, this is One Time Process, which has to be done prior using the APIs.
+3. You will have to insert your API Callback URL in the app settings page.
+
+4. You will have to copy `clientId` and `clientSecret` keys from the app settings, and put inside the `QBConfig.json` file.
+
+5. You can make different different apps for diff diff environments.
+
+6. After you the APIs on the host and its running -- use this URL to verify once.
+
+http://{DOMAIN}:3040/api/Oauth2Data/connectQuickBooks
+
+7. Note that, this is One Time Process, which has to be done prior using the APIs.
+
+8. After successful connection, you will see a JSON displayed on the browser. You will have to ignore that.
 
   
 # Initialization 
@@ -50,7 +64,7 @@ Require the quickbooks-module-prodio module and initialize the quickbooks npm mo
 ```JSX
 
  const qbClass = require('quickbooks-module-prodio');
- const qbObj = new qbClass(BASE_URL); //BASE_URL => is the url where its loopback apis are running. eg.
+ const qbObj = new qbClass(BASE_URL); //BASE_URL => is the url where its loopback apis are running. eg. (http://localhost:3040/api/)
  ``` 
 
 

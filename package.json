@@ -1,6 +1,6 @@
 {
   "name": "quickbooks-module-prodio",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "NPM Module for QBO Services",
   "main": "lib/index.js",
   "scripts": {
